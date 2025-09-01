@@ -1,13 +1,15 @@
 // src/components/Navbar.jsx
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Navbar = ({ user, onLogout }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
     if (onLogout) onLogout();
-    navigate("/"); // ✅ redirect to home after logout
+    toast.success("Logged out successfully"); // ✅ toast on logout
+    navigate("/"); // redirect to home after logout
   };
 
   return (

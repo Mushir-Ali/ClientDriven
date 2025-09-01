@@ -57,15 +57,7 @@ export const getTasks = async (req, res) => {
     // }
 
     let tasks;
-    if(user.role === "ADMIN"){
-      // Admin → fetch all
-      tasks = await Task.find();
-    }
-    else{
-      // User → fetch only their own tasks
-      tasks = await Task.find({"createdBy.id": new mongoose.Types.ObjectId(user._id)});
-      // console.log(tasks);
-    }
+    tasks = await Task.find();
     console.log(tasks);
     res.status(200).json(tasks);
   }
@@ -76,28 +68,38 @@ export const getTasks = async (req, res) => {
 
 
 // 3. update
-export const updateTask = async(req,res)=>{
-  try{
+export const updateTask = async (req, res) => {
+  try {
     const { id } = req.params;
     const { title, description } = req.body;
 
-    // Find task by ID and update
-    const task = await Task.findByIdAndUpdate(
-      id,
-      { title, description },
-      { new: true, runValidators: true } // return updated task + validate schema
-    );
+    const userId = req.user._id; // from auth middleware
 
-    if(!task){
+    // Find the task
+    const task = await Task.findById(id);
+
+    if (!task) {
       return res.status(404).json({ message: "Task not found" });
     }
+
+    // Check if the logged-in user is the creator
+    if (task.createdBy.id.toString() !== userId.toString()) {
+      return res.status(403).json({ message: "You can only update your own tasks" });
+    }
+
+    // Update task
+    task.title = title || task.title;
+    task.description = description || task.description;
+
+    await task.save();
+    console.log("ho gaya update");
 
     res.json({
       message: "Task updated successfully",
       task,
     });
-  }
-  catch(error){
+  } catch (error) {
+    console.error(error);
     res.status(500).json({
       message: "Error updating task",
       error: error.message,

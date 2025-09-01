@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 const Form = () => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -40,10 +41,24 @@ const Form = () => {
       // Save token locally
       localStorage.setItem("token", token);
 
-      // 👉 Pass user as props to Dashboard
+      // Show toast on successful login/signup
+      toast.success(`Welcome ${user.name}!`, {
+        position: "top-center", // center toast horizontally
+        style: {
+          transform: "translateY(50vh)", // vertical center
+        },
+        duration: 1000, // auto-dismiss after 3s
+      });
+
+      // Pass user as props to Dashboard , i am not using context here.
       navigate("/dashboard", { state: { user } });
     } catch (err) {
       console.error(err);
+      toast.error(err.response?.data?.message || "Something went wrong", {
+        position: "top-center",
+        style: { transform: "translateY(50vh)" },
+        duration: 1000,
+      });
       setError(err.response?.data?.message || "Something went wrong");
     } finally {
       setLoading(false);
@@ -52,6 +67,9 @@ const Form = () => {
 
   return (
     <div className="bg-white px-10 py-10 rounded-3xl border-2 border-gray w-full max-w-md mx-auto overflow-y-auto h-[90vh]">
+      {/* Add Toaster once here */}
+      {/* <Toaster /> do baar aane lagega */}
+
       <h1 className="text-4xl font-semibold text-center">
         {isSignUp ? "Create Account" : "Welcome Back"}
       </h1>
