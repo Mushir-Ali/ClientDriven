@@ -7,7 +7,16 @@ import Task from "../model/Task.js";
 // 1. create karega tasks
 export const createTask = async (req, res) => {
   try{
+    
+    // const user = {
+    //     "_id": "68b5c04034b8c79012a1717d",
+    //     "name": "test",
+    //     "email": "test@gmail.com",
+    //     "role": "USER"
+    // }
+
     const user = req.user;
+
     const { title, description } = req.body;
 
     const task = await Task.create({
@@ -40,6 +49,13 @@ export const getTasks = async (req, res) => {
   try{
     const user = req.user;
 
+    // const user = {
+    //     "_id": "68b5c04034b8c79012a1717d",
+    //     "name": "test",
+    //     "email": "test@gmail.com",
+    //     "role": "USER"
+    // }
+
     let tasks;
     if(user.role === "ADMIN"){
       // Admin → fetch all
@@ -47,7 +63,8 @@ export const getTasks = async (req, res) => {
     }
     else{
       // User → fetch only their own tasks
-      tasks = await Task.find({"createdBy.id": user.id});
+      tasks = await Task.find({"createdBy.id": new mongoose.Types.ObjectId(user._id)});
+      // console.log(tasks);
     }
 
     res.status(200).json(tasks);
@@ -97,7 +114,7 @@ export const deleteTask = async (req, res) => {
     // Only admins will be allowed
     // second check karne ke liye
 
-    if (user.role!=="ADMIN") {
+    if(user.role!=="ADMIN"){
       return res.status(403).json({message: "Access denied. Only admins can delete tasks."});
     }
 

@@ -14,16 +14,14 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cors());
 
-// connect to database
+// connecting  to database
 connectDB();
 
 // authentication routes 
 app.use('/api/auth',UserRoutes);
 
 // task routes
-app.use('api/tasks',TaskRoutes);
-
-// app.use('/api/tasks',taskRoutes);
+app.use('/api/tasks',TaskRoutes);
 
 app.get('/',(req,res)=>{
     res.send("Hello World");

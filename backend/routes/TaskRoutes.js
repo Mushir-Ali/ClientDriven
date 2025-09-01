@@ -4,16 +4,16 @@ import {createTask, getTasks, updateTask, deleteTask} from "../controller/TaskCo
 const router = express.Router();
 
 // create tasks
-router.post('/api/tasks',createTask);
+router.post('/create',createTask);
 
 // read tasks
-router.get('/api/tasks',getTasks);
+router.get('/read',getTasks);
 
 // update tasks
-router.put('/api/tasks/:id',updateTask);
+router.put('/update/:id',updateTask);
 
 // delete tasks
-router.delete('/api/tasks/:id',deleteTask);
+router.delete('/delete/:id',deleteTask);
 
 
 export default router;
