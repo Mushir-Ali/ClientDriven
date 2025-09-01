@@ -15,9 +15,9 @@ export const createTask = async (req, res) => {
     //     "role": "USER"
     // }
 
-    const user = req.user;
-
+    
     const { title, description } = req.body;
+    const user = req.user;
 
     const task = await Task.create({
       title,
@@ -66,7 +66,7 @@ export const getTasks = async (req, res) => {
       tasks = await Task.find({"createdBy.id": new mongoose.Types.ObjectId(user._id)});
       // console.log(tasks);
     }
-
+    console.log(tasks);
     res.status(200).json(tasks);
   }
   catch(error){

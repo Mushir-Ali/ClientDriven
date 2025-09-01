@@ -1,35 +1,38 @@
-import React from 'react'
+import React from 'react';
+import Form from '../components/Form';
 
 const LandingPage = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 text-gray-800 px-6">
-      {/* Company Name */}
-      <h1 className="text-5xl font-bold mb-4">Client Driven</h1>
-      <p className="text-lg italic mb-12">
-        "Empowering collaboration with smarter task management."
-      </p>
+    <div className="flex w-full h-screen">
+      {/* Left side: Form */}
+      <div className="w-full flex items-center justify-center lg:w-1/2 px-6">
+        <Form />
+      </div>
 
-      {/* Features */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
-        <div className="p-6 bg-white shadow rounded-2xl hover:shadow-lg transition">
-          <h2 className="text-2xl font-semibold mb-2">📌 Task Management</h2>
-          <p>Create, update, and delete tasks with ease.</p>
+      {/* Right side: Illustration */}
+      <div className="hidden relative lg:flex h-full w-1/2 flex-col items-center justify-start bg-gray-200 px-8">
+
+        <div className="mt-16 text-center z-10">
+          <h1 className="text-6xl font-bold text-violet-600 mb-4">
+            ClientDriven
+          </h1>
+          <p className="text-lg text-gray-600 mb-2">
+            Streamline Your Tasks Effortlessly
+          </p>
+          <p className="text-md text-gray-500 mb-8">
+            Manage tasks with ease – create, read, update, and delete. Tailored for both users and admins!
+          </p>
         </div>
-        <div className="p-6 bg-white shadow rounded-2xl hover:shadow-lg transition">
-          <h2 className="text-2xl font-semibold mb-2">👤 User Profiles</h2>
-          <p>Users can manage their own profiles and tasks seamlessly.</p>
-        </div>
-        <div className="p-6 bg-white shadow rounded-2xl hover:shadow-lg transition">
-          <h2 className="text-2xl font-semibold mb-2">🛡️ Admin Control</h2>
-          <p>Admins can oversee, edit, and manage everything with ease.</p>
-        </div>
-        <div className="p-6 bg-white shadow rounded-2xl hover:shadow-lg transition">
-          <h2 className="text-2xl font-semibold mb-2">📊 Transparency</h2>
-          <p>Track progress and collaborate effectively with clarity.</p>
-        </div>
+
+        {/* circle portion */}
+        <div className="w-60 h-60 bg-gradient-to-tr from-violet-500 to-pink-500 rounded-full animate-float-scale mt-auto mb-12 relative z-20" />
+
+        {/* blur portion */}
+        <div className="absolute bottom-0 w-full h-48 bg-white/50 backdrop-blur-3xl z-0 rounded-t-3xl" />
+
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LandingPage
+export default LandingPage;

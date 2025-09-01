@@ -9,10 +9,17 @@ const port = 3000;
 
 dotenv.config();
 
+app.use(cors({
+    origin: "http://localhost:5173", // your frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true, // if you need cookies or auth headers
+  })
+);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(cors());
 
 // connecting  to database
 connectDB();
