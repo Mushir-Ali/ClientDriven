@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import User from "../model/User.js";
 
 // Generate JWT
-const generateToken = (userId, role) => {
+const generateToken=(userId,role) =>{
   return jwt.sign(
     { id: userId, role }, 
     process.env.JWT_SECRET, 
@@ -15,23 +15,23 @@ const generateToken = (userId, role) => {
 // @route   POST api/auth/register
 // @access  Public
 export const registerUser = async (req, res) => {
-  try {
-    const { name, email, password, role } = req.body;
+  try{
+    const { name,email,password} = req.body;
 
     // check required fields
     if (!name || !email || !password) {
-      return res.status(400).json({ message: "Name, email, and password are required" });
+      return res.status(400).json({ message:"Name, email, and password are required"});
     }
 
     // check if user exists
     const existing = await User.findOne({ email });
-    if (existing) {
-      return res.status(400).json({ message: "User already exists" });
+    if(existing){
+      return res.status(400).json({message:"User already exists"});
     }
 
     // validate password length
-    if (password.length < 6) {
-      return res.status(400).json({ message: "Password must be at least 6 characters long" });
+    if(password.length<6){
+      return res.status(400).json({message:"Password must be at least 6 characters long"});
     }
 
     // hash password
@@ -54,9 +54,10 @@ export const registerUser = async (req, res) => {
         email: user.email,
         role: user.role,
       },
-      token: generateToken(user._id, user.role),
+      token:generateToken(user._id, user.role),
     });
-  } catch (error) {
+  }
+  catch(error){
     res.status(500).json({
       message: "Server error",
       error: error.message,
