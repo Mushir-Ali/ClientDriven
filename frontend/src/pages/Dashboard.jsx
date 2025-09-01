@@ -93,7 +93,7 @@ const Dashboard = () => {
         { title: newTaskTitle, description: newTaskDesc },
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      // Update tasks list
+      // Update tasks list karke state ko update karo
       setTasks(tasks.map((t) => (t._id === editingTask._id ? response.data.task : t)));
       setIsModalOpen(false);
       setNewTaskTitle("");
