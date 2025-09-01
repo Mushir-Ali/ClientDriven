@@ -111,6 +111,13 @@ export const deleteTask = async (req, res) => {
   try{
     const user=req.user;
 
+    // const user = {
+    //     "_id": "68b5c04034b8c79012a1717d",
+    //     "name": "test",
+    //     "email": "test@gmail.com",
+    //     "role": "USER"
+    // }
+
     // Only admins will be allowed
     // second check karne ke liye
 
