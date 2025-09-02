@@ -19,6 +19,8 @@ A modern task management dashboard built with React, Tailwind CSS, Node.js, and 
 
 - No frontend or API method exists to change a user’s role to admin.
 
+- Admin can delete and edit anyone's tasks, on the other hand user can only update/modify his own tasks. He can't delete tasks as for the case of admin.
+
 ## Tech Stack
 
 - Frontend: React, React Router, Tailwind CSS, Lucide Icons, react-hot-toast
