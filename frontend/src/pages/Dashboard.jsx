@@ -21,7 +21,7 @@ const Dashboard = () => {
     const fetchTasks = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:3000/api/tasks/read", {
+        const response = await axios.get("https://clientdriven-backend-ey3f.onrender.com/api/tasks/read", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setTasks(response.data);
@@ -42,7 +42,7 @@ const Dashboard = () => {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.delete(`http://localhost:3000/api/tasks/delete/${id}`, {
+      const response = await axios.delete(`https://clientdriven-backend-ey3f.onrender.com/api/tasks/delete/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setTasks(tasks.filter((task) => task._id !== id));
@@ -60,7 +60,7 @@ const Dashboard = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "http://localhost:3000/api/tasks/create",
+        "https://clientdriven-backend-ey3f.onrender.com/api/tasks/create",
         { title: newTaskTitle, description: newTaskDesc },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -89,7 +89,7 @@ const Dashboard = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.put(
-        `http://localhost:3000/api/tasks/update/${editingTask._id}`,
+        `https://clientdriven-backend-ey3f.onrender.com/api/tasks/update/${editingTask._id}`,
         { title: newTaskTitle, description: newTaskDesc },
         { headers: { Authorization: `Bearer ${token}` } }
       );
