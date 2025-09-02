@@ -7,7 +7,7 @@ A modern task management dashboard built with React, Tailwind CSS, Node.js, and 
 ## Features
 - User Authentication
 
-- Sign up with name, email, password, and role (Developer / Manager / Client)
+- Sign up with name, email, password.
 
 - Login with email and password
 
