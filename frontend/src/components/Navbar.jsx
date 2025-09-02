@@ -8,7 +8,7 @@ const Navbar = ({ user, onLogout }) => {
 
   const handleLogout = () => {
     if (onLogout) onLogout();
-    toast.success("Logged out successfully"); // ✅ toast on logout
+    toast.success("Logged out successfully"); // toast on logout
     navigate("/"); // redirect to home after logout
   };
 

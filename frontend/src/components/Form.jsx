@@ -94,19 +94,6 @@ const Form = () => {
                 placeholder="Enter your full name"
               />
             </div>
-
-            <div>
-              <label className="text-lg font-medium">Role</label>
-              <select
-                value={role}
-                onChange={(e) => setRole(e.target.value)}
-                className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent"
-              >
-                <option value="Developer">Developer</option>
-                <option value="Manager">Manager</option>
-                <option value="Client">Client</option>
-              </select>
-            </div>
           </>
         )}
 
