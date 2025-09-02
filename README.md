@@ -17,6 +17,8 @@ A modern task management dashboard built with React, Tailwind CSS, Node.js, and 
 
 - Admin privileges can only be assigned directly through the database.
 
+- one such account for use is admin@gmail.com with password (123456). Only for testing purposes.
+
 - No frontend or API method exists to change a user’s role to admin.
 
 - Admin can delete and edit anyone's tasks, on the other hand user can only update/modify his own tasks. He can't delete tasks as for the case of admin.
