@@ -12,6 +12,13 @@ A modern task management dashboard built with React, Tailwind CSS, Node.js, and 
 - Login with email and password
 
 - JWT-based authentication. One thing i need to mention here...i was authenticating using firebase. Due to time constraints, this project does not use Firebase for authentication or storage. Some redundancies might exist in the code or structure. I sincerely apologize to the reviewers for any inconvenience and hope the project still demonstrates the core functionality, UI design, and task management features effectively.
+
+## Admin Role
+
+- Admin privileges can only be assigned directly through the database.
+
+- No frontend or API method exists to change a user’s role to admin.
+
 ## Tech Stack
 
 - Frontend: React, React Router, Tailwind CSS, Lucide Icons, react-hot-toast
