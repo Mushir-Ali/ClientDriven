@@ -58,7 +58,7 @@ export const getTasks = async (req, res) => {
 
     let tasks;
     tasks = await Task.find();
-    console.log(tasks);
+    // console.log(tasks);
     res.status(200).json(tasks);
   }
   catch(error){
@@ -92,7 +92,7 @@ export const updateTask = async (req, res) => {
     task.description = description || task.description;
 
     await task.save();
-    console.log("ho gaya update");
+    // console.log("ho gaya update");
 
     res.json({
       message: "Task updated successfully",
