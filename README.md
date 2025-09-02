@@ -82,3 +82,10 @@ backend/
 │ └─ routes/
 │ ├─ taskRoutes.js
 │ └─ authRoutes.js
+
+
+##Future improvements
+- Drag-and-drop task reordering
+- Task deadlines and reminders
+- User role management with more permissions
+- Dark mode support
