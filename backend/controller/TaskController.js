@@ -46,25 +46,24 @@ export const createTask = async (req, res) => {
 
 // 2. read karega tasks
 export const getTasks = async (req, res) => {
-  try{
-    const user = req.user;
-
-    // const user = {
-    //     "_id": "68b5c04034b8c79012a1717d",
-    //     "name": "test",
-    //     "email": "test@gmail.com",
-    //     "role": "USER"
-    // }
+  try {
+    const user = req.user; // Make sure req.user is set by your auth middleware
 
     let tasks;
-    tasks = await Task.find();
-    // console.log(tasks);
+    if (user.role === "ADMIN") {
+      // Admin can see all tasks
+      tasks = await Task.find();
+    } else {
+      // Regular user can see only their own tasks
+      tasks = await Task.find({ "createdBy.id": user._id });
+    }
+
     res.status(200).json(tasks);
-  }
-  catch(error){
-    res.status(500).json({message: "Error fetching tasks", error: error.message});
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching tasks", error: error.message });
   }
 };
+
 
 
 // 3. update
