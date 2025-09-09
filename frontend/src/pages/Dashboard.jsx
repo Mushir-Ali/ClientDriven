@@ -113,7 +113,7 @@ const Dashboard = () => {
         <div className="mb-8 flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold text-gray-800">
-              Welcome back, <span className="text-blue-600">{user?.name || "User"} 👋</span>
+              Welcome back, <span className="text-blue-600">{user?.name || "User"}</span>
             </h1>
             <p className="text-gray-500 mt-2">Here’s what you need to focus on today</p>
           </div>
